@@ -1,4 +1,13 @@
 .topbar{
-    color: hsl(221, 60, 23);
+    background-color: hsl(221, 60%, 23%);
     height: 40px;
+}
+
+hr.hr{
+    margin: 0px;
+}
+
+.navdiv{
+    height: 20px;
+    background-color: gray;
 }
