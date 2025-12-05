@@ -1,6 +1,10 @@
 .topbar{
     background-color: hsl(221, 60%, 23%);
-    height: 40px;
+    height: 25px;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 hr.hr{
@@ -8,6 +12,26 @@ hr.hr{
 }
 
 .navdiv{
-    height: 20px;
-    background-color: gray;
+    height: 24px !important;
+    background-color: rgba(240, 240, 240, 1);
+}
+
+.navbar-toggler.navbutton{
+    height: 24px;
+    display: flex;
+    align-items: center;
+    border: none !important;
+    background: none;
+    transition: none !important;
+    box-shadow: none !important;
+}
+
+.nav-arrow{
+    height: 15px; 
+    pointer-events: none;
+    transition: transform 0.4s ease;
+}
+
+.navbar-toggler:not(.collapsed) .nav-arrow {
+    transform: rotateX(180deg)
 }

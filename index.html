@@ -12,68 +12,71 @@
     </head>
     <body>
         <div class="container-fluid p-0">
-            <div class="row topbar mx-12">
-                topbar
-            </div>
+            <div> <!-- top -->
+                <div class="row topbar mx-12">
+                    topbar
+                </div>
 
-            <nav>
-                <div class="navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="container-fluid">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <!--brand place (logo)-->
-                            <a class="navbar-brand" href="#">kafka</a>
+                <div> 
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                <!--brand place (logo)-->
+                                <a class="navbar-brand" href="#">kafka</a>
 
-                            <!-- search button-->
-                            <form class="d-flex mx-auto" role="search"> 
-                                <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search"/>
-                                <button class="btn" type="submit">🔍</button>
-                            </form>
+                                <!-- search button-->
+                                <form class="d-flex mx-auto" role="search"> 
+                                    <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search"/>
+                                    <button class="btn" type="submit">🔍</button>
+                                </form>
 
-                            <!-- buttons -->
-                            <table class="table mb-0" style="width: auto;">
-                                <tbody>
-                                    <tr>
-                                        <th>0</th>
-                                        <th>❔</th>
-                                        <th>🏪</th>
-                                        <th>🧕</th>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <!-- buttons -->
+                                <table class="table mb-0" style="width: auto;">
+                                    <tbody>
+                                        <tr>
+                                            <th>0</th>
+                                            <th>❔</th>
+                                            <th>🏪</th>
+                                            <th>🧕</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </nav>
+
+
+                    <nav class="navbar py-0">
+                        
+                        
+                        <div class="collapse navbar-collapse" id="categoriesCollapse"> <!-- fazer collapse navbar horizontal -->
+                                <ul class="navbar-nav flex-row w-100 justify-content-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="#">textext</a> <!-- nav-link active --- pagina atual-->
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">textext</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">textext</a>
+                                    </li>
+                                    <!--...-->
+                                </ul>
+                        </div>
+
+                        <div class="container-fluid navdiv">
+                            <button class="navbar-toggler navbutton mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#categoriesCollapse">
+                                <span><embed src="./images/nav-arrow.svg" class="nav-arrow"/></span>
+                            </button>
+                        </div>
+                    </nav>
                 </div>
-
-
-                <div class="navbar ">
-                    <div class="container-fluid navdiv">
-                        <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent">
-                            <span>😍</span>
-                        </button>
-                    </div>
-                    
-                    <div class="collapse" id="navbarToggleExternalContent"> <!-- fazer collapse navbar horizontal -->
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">textext</a> <!-- nav-link active --- pagina atual-->
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">textext</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">textext</a>
-                                </li>
-                                <!--...-->
-                            </ul>
-                    </div>
-                </div>
-            </nav>
+            </div>
             
-
-            
-
             <main>
+                <div> <!-- banner -->
 
+                </div>
             </main>
 
             <footer>
