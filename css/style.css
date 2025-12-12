@@ -1,6 +1,8 @@
-.topbar{
-    background-color: hsl(221, 60%, 23%);
-    height: 25px;
+:root { /* pallet for the primary colors of the brand*/
+    --dark-blue: rgba(24, 47, 96, 1); /* primary blue*/
+    --brand-white: rgba(250, 250, 250, 1); /* primary white*/
+    --collapse-color: rgba(240, 240, 240, 1); /* nav bar collapse grey*/
+    --search-bar-color: rgba(226, 226, 226, 1);
 }
 
 body {
@@ -11,9 +13,27 @@ hr.hr{
     margin: 0px;
 }
 
+/*nav style start*/
+.topbar{
+    background-color: var(--dark-blue);
+    height: 25px;
+}
+
+.brand-logo{
+    width: 7rem;
+    pointer-events: none;
+    margin-right: 6.25rem;
+}
+
+.navbar.navbar-expand-lg.bg-body-tertiary{
+    background-color: var(--brand-white) !important;
+    height: 5rem;
+}
+
+
 .navdiv{
     height: 24px !important;
-    background-color: rgba(240, 240, 240, 1);
+    background-color: var(--collapse-color);
 }
 
 .navbar-toggler.navbutton{
@@ -35,3 +55,59 @@ hr.hr{
 .navbar-toggler:not(.collapsed) .nav-arrow {
     transform: rotateX(180deg)
 }
+
+
+.form-control.serh{
+    border-style: hidden;
+    background-color: none;
+    background: none;
+    margin-left: 0.5rem;
+}
+
+.form-style{
+    border-style: hidden;
+    border-radius: 40px;
+    background-color: var(--search-bar-color);
+    width: 30rem;
+    height: 2.8rem;
+}
+
+.form-control:focus.serh{
+    background-color: var(--search-bar-color);
+    border-color: none;
+    border-radius: 40px;
+    box-shadow: none;
+}
+
+.search-icon{
+    width: 1.2rem; 
+    pointer-events: none;
+}
+.search-btn{
+    height: 1.4rem;
+    display: flex;
+    margin: 0.7rem 0.7rem 0.7rem 0rem !important;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+.primary-button-zone{
+    --bs-table-bg: none !important;
+    border-style: hidden;
+}
+
+.primary-button{
+    width: 2.8rem;
+    pointer-events: none;
+}
+
+a.spec{
+    display: block;
+    height: 100%;
+}
+
+/*nav style end*/
