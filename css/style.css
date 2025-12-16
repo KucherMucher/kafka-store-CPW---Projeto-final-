@@ -110,4 +110,39 @@ a.spec{
     height: 100%;
 }
 
+.banner{
+    width: 100%;
+    height: 25rem;
+    object-fit: cover;
+    object-position: 0 30%;
+    opacity: 50%;
+}
+
+.banner-text{
+    /* PREPARA-TE PARA A ÉPOCA */
+
+    position: absolute;
+    width: 961px;
+    height: 128px;
+    left: 479px;
+    top: 232px;
+
+    font-family: 'Porter Sans Block';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 5.5rem;
+    text-align: center;
+
+    color: #FAFAFA;
+}
+
+.title{
+    font-family: 'Reddit Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    margin: 2.5rem 3rem 2rem;
+}
+
+
 /*nav style end*/
