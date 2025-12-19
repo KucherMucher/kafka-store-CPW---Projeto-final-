@@ -146,3 +146,13 @@ a.spec{
 
 
 /*nav style end*/
+
+/* main */
+
+.carousel-element{
+    border-width: 3px;
+    border-style:solid;
+    border-color: var(--collapse-color);
+    margin:2%;
+
+}
