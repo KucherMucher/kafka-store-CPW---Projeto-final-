@@ -22,52 +22,74 @@ const imagesCarousel = [ //struct list
     {
         id: 1,
         src: 'images/carousel1.png',
-        pageLink: '../page.html'
+        pageLink: '../page.html',
+        class: 'carousel1'
     },
     {
         id: 2,
         src: 'images/carousel2.png',
-        pageLink: '../page.html'
+        pageLink: '../page.html',
+        class: 'carousel2'
 
         
     },
     {
         id: 3,
         src: 'images/carousel3.png',
-        pageLink: '../page.html'
+        pageLink: '../page.html',
+        class: 'carousel3'
         
     },
     {
         id: 4,
         src: 'images/carousel4.png',
-        pageLink: '../page.html'
+        pageLink: '../page.html',
+        class: 'carousel4'
         
     },
     {
         id: 5,
         src: 'images/carousel5.png',
-        pageLink: '../page.html'
+        pageLink: '../page.html',
+        class: 'carousel5'
         
     },
     {
         id: 6,
         src: 'images/carousel6.png',
-        pageLink: '../page.html'
+        pageLink: '../page.html',
+        class: 'carousel6'
         
     }
     
 ];
 
-function createCarouselElemenets(){
+function createCarouselElements(){
     carouselContainer.innerHTML = '';
 
     imagesCarousel.forEach((image, id) => {
-        const carousel_element = document.createElement('img');
-        carousel_element.src = image.src;
-        carousel_element.className = 'carousel-element';
-        carousel_element.dataset.id = id;
+        // group
+        const carousel_group = document.createElement('div');
+        carousel_group.className = 'carousel-element ';
 
-        carouselContainer.appendChild(carousel_element);
+        const carousel_element = document.createElement('div');
+        carousel_element.className = 'carousel-image ' + image.class 
+
+        // img
+        
+        // link
+        const carousel_button = document.createElement('a');
+        carousel_button.href = image.pageLink;
+
+        carousel_button.dataset.id = id;
+        carousel_button.innerHTML = "ver ->"
+        carousel_button.className = 'carousel-button';
+
+        carousel_element.appendChild(carousel_button);
+
+        carousel_group.appendChild(carousel_element);
+
+        carouselContainer.appendChild(carousel_group);
     });
 
     console.log("Created carousel images")
@@ -95,7 +117,7 @@ function initCarousel(){
             throw new Error('Didnt find necessary elements')
         }
 
-        createCarouselElemnets();
+        createCarouselElements();
 
         console.log('created carousel elements')
     }

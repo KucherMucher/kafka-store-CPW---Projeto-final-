@@ -149,10 +149,52 @@ a.spec{
 
 /* main */
 
+
 .carousel-element{
     border-width: 3px;
-    border-style:solid;
+    border-style: solid;
     border-color: var(--collapse-color);
-    margin:2%;
+    margin: 2%;
+    
+    width: 294px !important; 
+    height: 394px !important;
+    background-size: cover;
+}
 
+.carousel-button{
+    position: relative;
+    right: 100%;
+    bottom: 100%;
+    left: 0%;
+    top: 0%;
+    background-color: var(--collapse-color);
+}
+
+.carousel1{
+    background-image: url('../images/carousel1.png');
+}
+
+.carousel2{
+    background-image: url('../images/carousel2.png');
+}
+
+.carousel3{
+    background-image: url('../images/carousel3.png');
+}
+
+.carousel4{
+    background-image: url('../images/carousel4.png');
+}
+
+.carousel5{
+    background-image: url('../images/carousel5.png');
+}
+
+.carousel6{
+    background-image: url('../images/carousel6.png');
+}
+
+.carousel-image{
+    width: 294px;
+    height: 394px;
 }
