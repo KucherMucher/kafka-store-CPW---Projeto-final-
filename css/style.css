@@ -161,13 +161,20 @@ a.spec{
     background-size: cover;
 }
 
+a{
+    text-decoration: none !important;
+    color: black !important;
+}
+
 .carousel-button{
+    display: inline-block;
     position: relative;
-    right: 100%;
-    bottom: 100%;
-    left: 0%;
-    top: 0%;
+    left: 82%;
+    top: 92%;
     background-color: var(--collapse-color);
+    margin: auto 0;
+    text-align: center;
+    padding: 1.5%;
 }
 
 .carousel1{
@@ -195,6 +202,6 @@ a.spec{
 }
 
 .carousel-image{
-    width: 294px;
-    height: 394px;
+    width: 284px;
+    height: 388px;
 }

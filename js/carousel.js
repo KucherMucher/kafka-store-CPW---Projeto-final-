@@ -73,7 +73,7 @@ function createCarouselElements(){
         carousel_group.className = 'carousel-element ';
 
         const carousel_element = document.createElement('div');
-        carousel_element.className = 'carousel-image ' + image.class 
+        carousel_element.className = 'carousel-image' + ' ' + image.class 
 
         // img
         
@@ -95,15 +95,28 @@ function createCarouselElements(){
     console.log("Created carousel images")
 }
 
-function createCarouselImage(){
-    
-}
-
-function createCarouselButton(){
-
-}
 
 function createCarouselMoveButtons(){
+    const move_buttons = document.createElement('div');
+
+    const move_left = document.createElement('button');
+    span = document.createElement('span');
+    embed = document.createElement('embed')
+
+    embed.src = "../images/move_button.svg";
+    embed.className = "move-button-left";
+
+    span.appendChild(embed);
+    move_left.appendChild(span);
+
+    const move_right = document.createElement('button');
+
+    new span = span;
+    new embed.className = "move-button-right";
+
+    span.appendChild(embed);
+    move_right.appendChild(span);
+
 
 }
 
