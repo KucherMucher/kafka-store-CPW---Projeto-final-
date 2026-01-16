@@ -64,8 +64,16 @@ const imagesCarousel = [ //struct list
     
 ];
 
+let carouselIndex = 0;
+
 function createCarouselElements(){
     carouselContainer.innerHTML = '';
+
+    let oldTrack = carouselContainer.querySelector('.carousel-group')
+    if (oldTrack) {oldTrack.remove();}
+
+    const track = document.createElement('div')
+    track.className = "d-flex carousel-track"
 
     imagesCarousel.forEach((image, id) => {
         // group
@@ -89,9 +97,9 @@ function createCarouselElements(){
 
         carousel_group.appendChild(carousel_element);
 
-        carouselContainer.appendChild(carousel_group);
+        track.appendChild(carousel_group);
     });
-
+    carouselContainer.appendChild(track)
     console.log("Created carousel images")
 }
 
@@ -99,27 +107,67 @@ function createCarouselElements(){
 function createCarouselMoveButtons(){
     const move_buttons = document.createElement('div');
 
+    // left
     const move_left = document.createElement('button');
+    move_left.className = "move-button left"
+
     span = document.createElement('span');
-    embed = document.createElement('embed')
+    embed = document.createElement('embed');
 
-    embed.src = "../images/move_button.svg";
-    embed.className = "move-button-left";
+    embed.src = "images/move_button.svg";
+    embed.className = "move-button-embed left";
 
     span.appendChild(embed);
-    move_left.appendChild(span);
+    move_left.appendChild(span); 
 
+    // right
     const move_right = document.createElement('button');
+    move_right.className = "move-button right"
 
-    new span = span;
-    new embed.className = "move-button-right";
+    span1 = document.createElement('span');
+    embed1 = document.createElement('embed');
 
-    span.appendChild(embed);
-    move_right.appendChild(span);
+    embed1.src = "images/move_button.svg";
+    embed1.className = "move-button-embed right";
+    
+    span1.appendChild(embed1);
+    move_right.appendChild(span1);
 
+    // both
+
+    move_buttons.appendChild(move_left)
+    move_buttons.appendChild(move_right)
+
+    carouselContainer.appendChild(move_buttons)
+
+    move_left.addEventListener("click", function(){Move_left()});
+    move_right.addEventListener("click", function(){Move_right()});
 
 }
 
+function updateCarouselPosition(){
+    const track = carouselContainer.querySelector('.carousel-track');
+    const elementWidth = 294 + 2 * (parseInt(getComputedStyle(track.firstChild).marginLeft) || 0); // adjust if you have margin
+    track.style.transform = `translateX(-${track.firstChild + elementWidth}px)`;
+}
+
+function Move_left(){
+    carouselIndex = (carouselIndex - 1 + imagesCarousel.length) % imagesCarousel.length;
+    updateCarouselPosition();
+    console.log("move left", carouselIndex);
+
+    const track = carouselContainer.querySelector(".carousel-track");
+    child = track.firstChild;
+    track.firstChild.remove()
+    track.appendChild(child);
+}
+
+function Move_right(){
+    
+    carouselIndex = (carouselIndex + 1) % imagesCarousel.length;
+    updateCarouselPosition();
+    console.log("move right", carouselIndex)
+}
 
 
 function initCarousel(){
@@ -131,6 +179,8 @@ function initCarousel(){
         }
 
         createCarouselElements();
+
+        createCarouselMoveButtons();
 
         console.log('created carousel elements')
     }

@@ -166,6 +166,17 @@ a{
     color: black !important;
 }
 
+.carousel-container{
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.carousel-track{
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
 .carousel-button{
     display: inline-block;
     position: relative;
@@ -204,4 +215,32 @@ a{
 .carousel-image{
     width: 284px;
     height: 388px;
+}
+
+.move-button{
+    background: none;
+    border: none;
+
+    position: absolute;
+
+
+}
+
+.move-button.left{
+    top: 823px;
+}
+
+.move-button.right{
+    top: 823px;
+    left: 1835px;
+}
+
+.move-button-embed{
+    pointer-events: none;
+    width: 40px;
+}
+
+.move-button-embed.left{
+    transform: rotate(180deg);
+    
 }
