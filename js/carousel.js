@@ -144,28 +144,31 @@ function createCarouselMoveButtons(){
     move_right.addEventListener("click", function(){Move_right()});
 
 }
-
+count = 0
 function updateCarouselPosition(){
-    const track = carouselContainer.querySelector('.carousel-track');
+    const track = carouselContainer.querySelector('.carousel-track'); //instead of moving a track move every element
     const elementWidth = 294 + 2 * (parseInt(getComputedStyle(track.firstChild).marginLeft) || 0); // adjust if you have margin
-    track.style.transform = `translateX(-${track.firstChild + elementWidth}px)`;
+    track.style.transform = `translateX(-${elementWidth*count}px)`;
+    
 }
 
 function Move_left(){
     carouselIndex = (carouselIndex - 1 + imagesCarousel.length) % imagesCarousel.length;
     updateCarouselPosition();
+    count +=1
     console.log("move left", carouselIndex);
 
     const track = carouselContainer.querySelector(".carousel-track");
     child = track.firstChild;
     track.firstChild.remove()
     track.appendChild(child);
+    
 }
 
 function Move_right(){
-    
     carouselIndex = (carouselIndex + 1) % imagesCarousel.length;
     updateCarouselPosition();
+    count -=1
     console.log("move right", carouselIndex)
 }
 
