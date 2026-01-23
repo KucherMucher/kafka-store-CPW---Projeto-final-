@@ -1,15 +1,15 @@
-import {initCarousel} from './carousel'
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loading...');
-
+    console.log('DOM loading - main');
     // Todo o código da galeria será colocado aqui
-    scriptsLoader();
+    loadScript(carousel, function() {initCarousel();})
 });
 
-function scriptsLoader(){
-    initCarousel()
+carousel = "./js/carousel.js"
+mtum = ".js/move_the_unmovable.js"
+
+function loadScript(src, callback){
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = callback
+    document.body.append(script)
 }
-
-
-//for now dont use

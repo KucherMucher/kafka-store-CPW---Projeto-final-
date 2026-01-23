@@ -1,10 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loading - carousel');
-
-    // Todo o código da galeria será colocado aqui
-    initCarousel();
-});
-
 const carouselContainer = document.querySelector('#carousel-container');
 
 function initCarousel(){
@@ -140,36 +133,71 @@ function createCarouselMoveButtons(){
 
     carouselContainer.appendChild(move_buttons)
 
-    move_left.addEventListener("click", function(){Move_left()});
-    move_right.addEventListener("click", function(){Move_right()});
+    move_left.addEventListener("click", function(){Move_left(move_left, move_right)});
+    move_right.addEventListener("click", function(){Move_right(move_left, move_right)});
 
 }
-count = 0
-function updateCarouselPosition(){
-    const track = carouselContainer.querySelector('.carousel-track'); //instead of moving a track move every element
-    const elementWidth = 294 + 2 * (parseInt(getComputedStyle(track.firstChild).marginLeft) || 0); // adjust if you have margin
-    track.style.transform = `translateX(-${elementWidth*count}px)`;
-    
-}
 
-function Move_left(){
-    carouselIndex = (carouselIndex - 1 + imagesCarousel.length) % imagesCarousel.length;
-    updateCarouselPosition();
-    count +=1
-    console.log("move left", carouselIndex);
+function Move_left(move_left, move_right){
+    move_left.disabled = true;
+    move_right.disabled = true;
 
+// with transition
     const track = carouselContainer.querySelector(".carousel-track");
-    child = track.firstChild;
-    track.firstChild.remove()
-    track.appendChild(child);
+    const elementWidth = track.firstElementChild.offsetWidth;
+
+// Animate
+    track.style.transform = `translateX(-${elementWidth+75}px)`;
+    let element_copy = track.firstElementChild.cloneNode(true)
+    track.appendChild(element_copy)
+
+    
+    
+
+    track.addEventListener("transitionend", function handler() {
+        element_copy.remove()
+        // After animation, move first to end and reset transform
+        track.style.transition = "none";
+        track.appendChild(track.firstElementChild);
+        track.style.transform = "translateX(0)";
+        // Force reflow to apply the transform instantly
+        void track.offsetWidth;
+        track.style.transition = "transform 0.5s";
+        move_left.disabled = false;
+        move_right.disabled = false;
+        track.removeEventListener("transitionend", handler);
+        
+        
+    });
     
 }
 
-function Move_right(){
-    carouselIndex = (carouselIndex + 1) % imagesCarousel.length;
-    updateCarouselPosition();
-    count -=1
-    console.log("move right", carouselIndex)
+function Move_right(move_left, move_right){
+    move_left.disabled = true;
+    move_right.disabled = true;
+    
+    const track = carouselContainer.querySelector(".carousel-track");
+    const elementWidth = track.firstElementChild.offsetWidth;
+
+    // Instantly move last to front and shift left (no animation)
+    let element_copy = track.lastElementChild.cloneNode(true)
+    track.insertBefore(element_copy, track.lastElementChild)
+    
+    track.style.transition = "none";
+    track.insertBefore(track.lastElementChild, track.firstElementChild);
+    track.style.transform = `translateX(-${elementWidth+75}px)`;
+    void track.offsetWidth; // Force reflow
+
+    // Animate back to normal
+    track.style.transition = "transform 0.5s";
+    track.style.transform = "translateX(0)";
+
+    track.addEventListener("transitionend", function handler() {
+        element_copy.remove()
+        move_left.disabled = false;
+        move_right.disabled = false;
+        track.removeEventListener("transitionend", handler);
+    });
 }
 
 
