@@ -1,0 +1,1 @@
+add bootstrap to banner text and carousel section
