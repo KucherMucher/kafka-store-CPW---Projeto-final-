@@ -138,7 +138,7 @@ function createCarouselMoveButtons(){
 
 }
 
-function Move_left(move_left, move_right){
+function Move_right(move_left, move_right){
     move_left.disabled = true;
     move_right.disabled = true;
 
@@ -172,7 +172,7 @@ function Move_left(move_left, move_right){
     
 }
 
-function Move_right(move_left, move_right){
+function Move_left(move_left, move_right){
     move_left.disabled = true;
     move_right.disabled = true;
     
