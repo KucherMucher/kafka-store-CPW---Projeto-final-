@@ -10,8 +10,8 @@
                 <a class="navbar-brand" href="?page=home"><embed src="./images/brand-logo.svg" class="brand-logo"></a>
 
                 <!-- search bar -->
-                <form class="d-flex form-style" role="search"> 
-                    <input class="form-control serh me-1" type="search" placeholder="Search" aria-label="Search"/>
+                <form class="d-flex form-style" role="search" action="?page=search" method="post"> 
+                    <input class="form-control serh me-1" type="search" name="search" placeholder="Search" aria-label="Search"/>
                     <button class="btn p-0 search-btn" type="submit"><embed src="./images/search-icon.svg" class="search-icon"></button>
                 </form>
 

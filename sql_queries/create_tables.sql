@@ -1,10 +1,13 @@
--- Active: 1770740112615@@127.0.0.1@3306@kafka_local_database
+-- Active: 1771948510793@@127.0.0.1@3306@kafka_local_database
 CREATE TABLE `products` (
   `id_product` integer PRIMARY KEY,
   `id_manufacturer` integer,
   `product_name` varchar(255),
   `quantity` integer,
-  `price` integer
+  `price` integer,
+  about varchar(255),
+  specs varchar(255),
+  img varchar(255)
 );
 
 CREATE TABLE `tags` (

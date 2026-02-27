@@ -23,16 +23,9 @@
                 else{
                     $page = "home";
                 }
-                switch ($page) {
-                    case 'home':
-                        include 'home.php';
-                        break;
-                    case 'test':
-                        include 'test.php';
-                        break;
-                }
+                include 'navsystem.php';
             ?>
-            <?php include 'connect.php' ?>
+            
         </div>
 
 
