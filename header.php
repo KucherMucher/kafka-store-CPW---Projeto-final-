@@ -1,6 +1,6 @@
-<div class="row topbar mx-12">
+<!--<div class="row topbar mx-12">
     topbar
-</div>
+</div> -->
 
 <div> 
     <nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- navbar first -->

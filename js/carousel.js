@@ -1,8 +1,6 @@
 const carouselContainer = document.querySelector('#carousel-container');
 
 function initCarousel(){
-    
-
     if(!carouselContainer){
         console.log("carousel Conainer not found");
         return;

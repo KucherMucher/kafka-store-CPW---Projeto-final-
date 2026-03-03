@@ -17,8 +17,8 @@
         <div class="container-fluid carousel-container " id="carousel-container">
 
         </div>
-<!--
-        <div id="carouselExample" class="carousel slide">
+
+        <div id="carouselExample" class="carousel slide"> // for testing
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="card" style="width: 18rem;">
@@ -78,7 +78,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    -->      
+          
         
     </section>
 
