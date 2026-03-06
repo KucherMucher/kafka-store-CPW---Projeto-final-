@@ -43,7 +43,6 @@ if ($result -> num_rows > 0){ // get very element that meets the criteria (for n
         $img             = $raw_info['img'];*/
 
         $thelist[] = $raw_info;
-        echo "\n".$id_product;
 
         // echo '<script>myJsFunction(' . json_encode($array) . ');</script>'; or echo '<script>myJsFunction(' . $num . ');</script>'; to execute a function.
         

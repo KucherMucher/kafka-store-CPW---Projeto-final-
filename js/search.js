@@ -13,7 +13,7 @@ const searchContainer = document.querySelector('#searchContainer');
 
 function initSearchContainer(thelist){
     if (thelist){
-        console.log("Succesefuly connected php to js")
+        console.log("Succesefuly connected zasdphp to js")
         //console.log(thelist)
     } else {
         console.log("nope...")
@@ -22,7 +22,9 @@ function initSearchContainer(thelist){
 
 function createSearchResultElement(/*id,*/ id_man, nami, price, img){
     const currentElement = document.createElement('div');
-    currentElement.innerHTML = currentElement.innerHTML = `<img src="${img}" alt="product image"> <p class="mb-0">${nami}</p> <p>${price}€</p>`; //temporary???? maybe not
+    currentElement.className = 'searchElement';
+    console.log(currentElement);
+    currentElement.innerHTML = `<img src="${img}" alt="product image"> <p class="mb-0">${nami}</p> <p>${price}€</p>`; //temporary???? maybe not
     searchContainer.appendChild(currentElement);
 }
 
