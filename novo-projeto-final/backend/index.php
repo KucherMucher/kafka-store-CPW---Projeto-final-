@@ -24,6 +24,10 @@
                     $page = "backend";
                 }
                 include 'navsystem.php';
+
+                if(isset($_GET['popup'])){
+                    include "ace.php";
+                }
             ?>
             
         </div>
