@@ -16,68 +16,49 @@ idea:
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="modalDate"></h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form>
+            <div class="pages border border-2 rounded-2 p-2 mb-3">
+                <div class="mb-3">
+                  <label for="page1" class="form-label">Página 1</label>
+                  <textarea class="form-control" id="page1" rows="3" placeholder="Texto para página 2"></textarea>
+                </div> 
+
+                <div class="mb-3">
+                  <label for="page2" class="form-label">Página 2</label>
+                  <textarea class="form-control" id="page2" rows="3" placeholder="Texto para página 2"></textarea>
+                </div> 
+                <button type="button" class="btn btn-primary" id="createNewPage">+</button>
+            </div>
+
+            <div class="music border border-2 rounded-2 p-2 mb-3">
+              <div class="mb-3">
+                <label for="music" class="form-label">Música</label>
+                <input type="text" class="form-control" id="music" placeholder="URL de Youtube">
+              </div> 
+            </div>
+
+            <div class="video border border-2 rounded-2 p-2">
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Vídeo</label>
+                <input type="text" class="form-control" id="video" placeholder="URL de Youtube">
+              </div> 
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
   </div>
 
 </div>
-<script>
-  var calendar;
-  function eventPopup(date, event){
-    var popup = new bootstrap.Modal(document.getElementById('calendarioPopup'));
-    popup.show()
-    
-    if (event != None){
-
-    }
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarElement = document.getElementById('calendar');
-    calendar = new FullCalendar.Calendar(calendarElement, {
-      // dont use this -----> plugins: [ FullCalendar.bootstrap5Plugin ], NEVER!!!!!!!!! NEEEEEVEEEEEERRRR!!!!!
-      initialView: 'dayGridMonth',
-      themeSystem: 'bootstrap5',
-      dateClick: function(info) {
-      // Scroll to or navigate to a section with id="section-YYYY-MM-DD"
-        //window.location.href = '?page=calendario&popup=ace&date=' + info.dateStr; // maybe instead of changing a link, create a function that opens popup?
-        var events = calendar.getEvents();
-
-        eventPopup(info.dateStr, 
-          events.some(event => event.startStr === info.dateStr) ? events : None)
-        }
-    });
-      /*calendar.addEvent({
-  //    id: 'a',
-        title: 'event',
-        start: '2026-03-17'
-      });
-
-      calendar.addEventSource([
-        {title: 'a', start: '2026-03-12'},
-        {title: 'b', start: '2026-03-14'}
-      ]);*/
-    event_list.forEach(event => {
-      calendar.addEvent({
-        id: event['id_event'],
-        title: event['event_name'],
-        start: event['date']
-      });
-    });
-    calendar.render();
-  });
-  
-
-    
+<script src="./js/calendar.js">  
 </script>
 
 
@@ -95,7 +76,7 @@ idea:
       }
     }
     print_r($event_list);
-    echo '<script>var event_list = ' . json_encode($event_list) . ';</script>';
+    echo '<script>SetEventList('.json_encode($event_list).');</script>';
 
 ?>
 
