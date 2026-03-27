@@ -1,7 +1,12 @@
+/*
+Ctrl + F5 se nao autaliza
+*/ 
+
 var calendar;
 var event_list = [];
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("casdsad");
     var calendarElement = document.getElementById('calendar');
     calendar = new FullCalendar.Calendar(calendarElement, {
         // dont use this -----> plugins: [ FullCalendar.bootstrap5Plugin ], NEVER!!!!!!!!! NEEEEEVEEEEEERRRR!!!!!
@@ -11,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Scroll to or navigate to a section with id="section-YYYY-MM-DD"
         //window.location.href = '?page=calendario&popup=ace&date=' + info.dateStr; // maybe instead of changing a link, create a function that opens popup?
             var events = calendar.getEvents();
-            console.log("click")
-            eventPopup(info.dateStr, 
-                events.some(event => event.startStr === info.dateStr) ? events.find(event => event.startStr === info.dateStr) : null)
+            console.log("1 click");
+            console.log(event_list)
+            eventPopup(event_list.find(current_event => current_event['date'] == info.dateStr), info.dateStr)
                 // dont do this, bad writing. Use the php version instead, as it has all the things needed
         }
     });
@@ -26,14 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     calendar.render();
+
+    document.getElementById('createNewPage').addEventListener('click', createNewPage);
 });
 
 function SetEventList(el){
     event_list = el;
+    console.log(event_list);
 }
 
 
-function eventPopup(date, event){
+function eventPopup(event, date){
+    ClearModal()
     console.log(event)
     var popup = new bootstrap.Modal(document.getElementById('calendarioPopup'));
     //const modalHeader = document.getElementsByClassName('modal-header')[0];
@@ -48,25 +57,76 @@ function eventPopup(date, event){
     if (event != null ){
         createContentWithEvent(event)
     }
+    else{
+        createStartingPages()
+    }
 }
+
 
 function createContentWithEvent(event){
     const modalBody = document.getElementsByClassName('modal-body')[0];
+    const pages = document.getElementsByClassName('pages')[0];
     console.log(event['music_url'])  
     document.getElementById('music').value = event['music_url']
     document.getElementById('video').value = event['video_url']
-    // create a parser in js that will parse one single string into different pages
+    page_array = pageParser(event['pages'])
+    console.log(page_array)
+
+    for(let i=0; i<page_array.length; i++){
+        createPage(i+1, page_array[i])
+    }
 }
 
+function pageParser(string){
+    // parse symbol - [\\]
+    return string.split('[\\]') 
+    
+}
 
+function createNewPage(){
+    const pages = document.getElementsByClassName('pages')[0];
+    n_page = pages.getElementsByClassName('page').length;
 
-/*calendar.addEvent({
-    //    id: 'a',
-        title: 'event',
-        start: '2026-03-17'
-        });
+    createPage(n_page)
+}
 
-        calendar.addEventSource([
-        {title: 'a', start: '2026-03-12'},
-        {title: 'b', start: '2026-03-14'}
-        ]);*/
+function createPage(n_page=0, textarea_text=''){
+    const pages = document.getElementsByClassName('pages')[0];
+
+    console.log("happening")
+    var iStr = n_page.toString()
+    var pageStr = 'page' + iStr
+
+    var page = document.createElement('div')
+    page.className = 'mb-3 page'
+
+    var label = document.createElement('label')
+    label.htmlFor = pageStr
+    label.className = 'form-label'
+    label.innerHTML = 'Página ' + iStr
+
+    var textarea = document.createElement('textarea')
+    textarea.className = 'form-control'
+    textarea.id = pageStr
+    textarea.rows = '3'
+    textarea.placeholder = 'Texto para página ' + iStr
+
+    textarea.innerHTML = textarea_text
+
+    page.appendChild(label)
+    page.appendChild(textarea)
+
+    pages.insertBefore(page, document.getElementById('createNewPage'))
+}
+
+function createStartingPages(){
+    createPage(1); createPage(2);
+
+    
+}
+
+function ClearModal(){
+    document.getElementsByClassName('pages')[0].querySelectorAll('div').forEach(div => div.remove());
+    document.getElementById('music').value = '';
+    document.getElementById('video').value = '';
+}

@@ -22,7 +22,7 @@ idea:
         <div class="modal-body">
           <form>
             <div class="pages border border-2 rounded-2 p-2 mb-3">
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                   <label for="page1" class="form-label">Página 1</label>
                   <textarea class="form-control" id="page1" rows="3" placeholder="Texto para página 2"></textarea>
                 </div> 
@@ -30,7 +30,7 @@ idea:
                 <div class="mb-3">
                   <label for="page2" class="form-label">Página 2</label>
                   <textarea class="form-control" id="page2" rows="3" placeholder="Texto para página 2"></textarea>
-                </div> 
+                </div> -->
                 <button type="button" class="btn btn-primary" id="createNewPage">+</button>
             </div>
 
