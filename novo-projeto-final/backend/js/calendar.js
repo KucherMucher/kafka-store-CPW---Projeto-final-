@@ -85,7 +85,7 @@ function pageParser(string){
 
 function createNewPage(){
     const pages = document.getElementsByClassName('pages')[0];
-    n_page = pages.getElementsByClassName('page').length;
+    n_page = pages.getElementsByClassName('page').length + 1;
 
     createPage(n_page)
 }
@@ -105,11 +105,21 @@ function createPage(n_page=0, textarea_text=''){
     label.className = 'form-label'
     label.innerHTML = 'Página ' + iStr
 
+    var removeButton = document.createElement('button')
+    removeButton.type = 'button'
+    removeButton.className = "btn btn-primary removeButton"
+    // removeButton.id = "removeButton" + iStr
+    removeButton.dataset.page = iStr
+    removeButton.addEventListener('click', removePage);
+    removeButton.innerHTML = '-'
+    label.appendChild(removeButton)
+
     var textarea = document.createElement('textarea')
     textarea.className = 'form-control'
     textarea.id = pageStr
     textarea.rows = '3'
     textarea.placeholder = 'Texto para página ' + iStr
+    textarea.name = 'page' + iStr
 
     textarea.innerHTML = textarea_text
 
@@ -129,4 +139,20 @@ function ClearModal(){
     document.getElementsByClassName('pages')[0].querySelectorAll('div').forEach(div => div.remove());
     document.getElementById('music').value = '';
     document.getElementById('video').value = '';
+}
+
+function removePage(){
+    const n_page = event.target.dataset.page;
+    console.log("page" + n_page)
+
+    const div = event.target.closest('.mb-3');
+    if (div){div.remove()}
+    correctPages(n_page)
+}
+
+function correctPages(n_page){
+    document.getElementsByClassName('page').forEach(page =>{
+        
+    });
+
 }

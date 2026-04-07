@@ -20,7 +20,7 @@ idea:
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form method="POST" action="index.php?page=calendario" class="modal-form">
             <div class="pages border border-2 rounded-2 p-2 mb-3">
                 <!-- <div class="mb-3">
                   <label for="page1" class="form-label">Página 1</label>
@@ -37,21 +37,22 @@ idea:
             <div class="music border border-2 rounded-2 p-2 mb-3">
               <div class="mb-3">
                 <label for="music" class="form-label">Música</label>
-                <input type="text" class="form-control" id="music" placeholder="URL de Youtube">
+                <input type="text" class="form-control" id="music" placeholder="URL de Youtube" name="music">
               </div> 
             </div>
 
             <div class="video border border-2 rounded-2 p-2">
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Vídeo</label>
-                <input type="text" class="form-control" id="video" placeholder="URL de Youtube">
+                <input type="text" class="form-control" id="video" placeholder="URL de Youtube" name="video">
               </div> 
             </div>
+            <button type="submit" class="btn btn-primary" >Save changes</button>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          
         </div>
       </div>
     </div>
@@ -75,8 +76,12 @@ idea:
         
       }
     }
-    print_r($event_list);
+    print_r($event_list); // debug
     echo '<script>SetEventList('.json_encode($event_list).');</script>';
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+      print_r($_POST);
+    }
 
 ?>
 
