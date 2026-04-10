@@ -41,12 +41,12 @@ idea:
               </div> 
             </div>
 
-            <div class="video border border-2 rounded-2 p-2">
+            <!--<div class="video border border-2 rounded-2 p-2">
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Vídeo</label>
                 <input type="text" class="form-control" id="video" placeholder="URL de Youtube" name="video">
               </div> 
-            </div>
+            </div>-->
             <button type="submit" class="btn btn-primary" >Save changes</button>
           </form>
         </div>

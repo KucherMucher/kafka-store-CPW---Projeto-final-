@@ -68,7 +68,7 @@ function createContentWithEvent(event){
     const pages = document.getElementsByClassName('pages')[0];
     console.log(event['music_url'])  
     document.getElementById('music').value = event['music_url']
-    document.getElementById('video').value = event['video_url']
+    //document.getElementById('video').value = event['video_url']
     page_array = pageParser(event['pages'])
     console.log(page_array)
 
@@ -94,8 +94,8 @@ function createPage(n_page=0, textarea_text=''){
     const pages = document.getElementsByClassName('pages')[0];
 
     console.log("happening")
-    var iStr = n_page.toString()
-    var pageStr = 'page' + iStr
+    // var iStr = n_page.toString()
+    var pageStr = 'page' + n_page
 
     var page = document.createElement('div')
     page.className = 'mb-3 page'
@@ -103,30 +103,95 @@ function createPage(n_page=0, textarea_text=''){
     var label = document.createElement('label')
     label.htmlFor = pageStr
     label.className = 'form-label'
-    label.innerHTML = 'Página ' + iStr
+    label.innerHTML = 'Página ' + n_page
 
+    var selectContainer = document.createElement("div")
+    selectContainer.id = "selectContainer";
+
+    var select = createSelect(n_page, textarea_text)
+    label.appendChild(select)
+
+    var removeButton = createRemoveButton(n_page);
+    label.appendChild(removeButton)
+
+    /*var textarea = document.createElement('textarea')
+    textarea.className = 'form-control'
+    textarea.id = pageStr
+    textarea.rows = '3'
+    textarea.placeholder = 'Texto para página ' + n_page
+    textarea.name = 'page' + n_page
+
+    textarea.innerHTML = textarea_text*/
+
+    //selectContainer.className = ""
+
+    page.appendChild(label)
+    page.appendChild(selectContainer)
+
+    pages.insertBefore(page, document.getElementById('createNewPage'))
+}
+
+function createRemoveButton(n){
     var removeButton = document.createElement('button')
     removeButton.type = 'button'
     removeButton.className = "btn btn-primary removeButton"
     // removeButton.id = "removeButton" + iStr
-    removeButton.dataset.page = iStr
+    removeButton.dataset.page = n
     removeButton.addEventListener('click', removePage);
     removeButton.innerHTML = '-'
-    label.appendChild(removeButton)
 
-    var textarea = document.createElement('textarea')
-    textarea.className = 'form-control'
-    textarea.id = pageStr
-    textarea.rows = '3'
-    textarea.placeholder = 'Texto para página ' + iStr
-    textarea.name = 'page' + iStr
+    return removeButton;
+}
 
-    textarea.innerHTML = textarea_text
+function createSelect(n, textarea_text){
+    var select = document.createElement('select')
+    select.className = "form-select"
 
-    page.appendChild(label)
-    page.appendChild(textarea)
+    for(let i=0; i<2; i++){
+        var option = document.createElement('option')
+        if (i===0){
+            option.selected=true;
+            option.innerHTML = 'Texto';
+            option.value = 'texto';
+        }
+        else{
+            option.value = "video"
+            option.innerHTML = "Video"
+        }
 
-    pages.insertBefore(page, document.getElementById('createNewPage'))
+        select.appendChild(option)
+    }
+    
+    const container = document.getElementById("selectContainer")
+    var pageStr = 'page' + n
+    select.addEventListener('change', function(){
+        if (this.value === 'texto') {
+            var textarea = document.createElement('textarea')
+            textarea.className = 'form-control'
+            textarea.id = pageStr
+            textarea.rows = '3'
+            textarea.placeholder = 'Texto para página'
+            textarea.name = pageStr
+
+            textarea.innerHTML = textarea_text
+
+            container.appendChild(textarea)
+        }
+        else{
+            var input = document.createElement('input')
+            input.type = "text"
+            input.className = "form-control"
+            input.id = pageStr
+            input.placeholder = "Video URL"
+            input.name = pageStr
+
+            input.innerHTML = textarea_text
+
+            container.appendChild(input)
+        }
+    })
+
+    return select;
 }
 
 function createStartingPages(){
@@ -138,11 +203,11 @@ function createStartingPages(){
 function ClearModal(){
     document.getElementsByClassName('pages')[0].querySelectorAll('div').forEach(div => div.remove());
     document.getElementById('music').value = '';
-    document.getElementById('video').value = '';
+    //document.getElementById('video').value = '';
 }
 
 function removePage(){
-    const n_page = event.target.dataset.page;
+    const n_page = parseInt(event.target.dataset.page);
     console.log("page" + n_page)
 
     const div = event.target.closest('.mb-3');
@@ -151,8 +216,41 @@ function removePage(){
 }
 
 function correctPages(n_page){
-    document.getElementsByClassName('page').forEach(page =>{
-        
-    });
+    const pages = document.getElementsByClassName('page')
+    let lastpage = pages.length
+    console.log("Last page: "+lastpage)
+        /*
+        we got div for each page.
+        so div
+            ⊢ label "for=pageN"
+            ...
 
+        we need to navigate to label inside each div
+
+        ex: remove page 3
+        page 1, page 2, page 4, page 5
+
+        go up by num every page below page n
+        */
+
+    for(i=0; i<pages.length; i++){ // method 1 
+        if (i < n_page-1){continue;} // n_page = 3, i = 2, n_page = 4, i = 3
+        else{
+            let n = i+1
+            var current_page_label = pages[i].querySelector('label')
+            //console.log(current_page_label)
+            current_page_label.htmlFor = "page" + n
+            current_page_label.innerHTML = "Página " + n;
+            current_page_label.appendChild(createSelect(n))
+            current_page_label.appendChild(createRemoveButton(n))
+
+            var current_page_textarea = pages[i].querySelector('textarea')
+            current_page_textarea.id = "page"+n
+        }
+    }
 }
+
+function ANNIHILATE(page, n){
+    console.log("ANNNIIIHILATE PAGE " + n)
+    page.remove();
+}   
