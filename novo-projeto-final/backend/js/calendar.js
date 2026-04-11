@@ -163,6 +163,7 @@ function createSelect(n, textarea_text){
     }
     
     const container = document.getElementById("selectContainer")
+    console.log(container)
     var pageStr = 'page' + n
     select.addEventListener('change', function(){
         if (this.value === 'texto') {
