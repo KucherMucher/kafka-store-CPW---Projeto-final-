@@ -162,10 +162,9 @@ function createSelect(n, textarea_text){
         select.appendChild(option)
     }
     
-    const container = document.getElementById("selectContainer"+n)
-    console.log(container)
     var pageStr = 'page' + n
     select.addEventListener('change', function(){
+        const container = document.getElementById("selectContainer"+n)
         if (this.value === 'texto') {
             var textarea = document.createElement('textarea')
             textarea.className = 'form-control'
