@@ -106,7 +106,7 @@ function createPage(n_page=0, textarea_text=''){
     label.innerHTML = 'Página ' + n_page
 
     var selectContainer = document.createElement("div")
-    selectContainer.id = "selectContainer";
+    selectContainer.id = "selectContainer"+n_page;
 
     var select = createSelect(n_page, textarea_text)
     label.appendChild(select)
@@ -162,7 +162,7 @@ function createSelect(n, textarea_text){
         select.appendChild(option)
     }
     
-    const container = document.getElementById("selectContainer")
+    const container = document.getElementById("selectContainer"+n)
     console.log(container)
     var pageStr = 'page' + n
     select.addEventListener('change', function(){
