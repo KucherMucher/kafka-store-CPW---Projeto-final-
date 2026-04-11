@@ -105,28 +105,29 @@ function createPage(n_page=0, textarea_text=''){
     label.className = 'form-label'
     label.innerHTML = 'Página ' + n_page
 
-    var selectContainer = document.createElement("div")
-    selectContainer.id = "selectContainer"+n_page;
+    //var selectContainer = document.createElement("div")
+    //selectContainer.id = "selectContainer"+n_page;
 
-    var select = createSelect(n_page, textarea_text)
-    label.appendChild(select)
+    /*var select = createSelect(n_page, textarea_text)
+    label.appendChild(select)*/
 
     var removeButton = createRemoveButton(n_page);
     label.appendChild(removeButton)
 
-    /*var textarea = document.createElement('textarea')
+    var textarea = document.createElement('textarea')
     textarea.className = 'form-control'
     textarea.id = pageStr
     textarea.rows = '3'
     textarea.placeholder = 'Texto para página ' + n_page
     textarea.name = 'page' + n_page
 
-    textarea.innerHTML = textarea_text*/
+    textarea.innerHTML = textarea_text
 
     //selectContainer.className = ""
 
     page.appendChild(label)
-    page.appendChild(selectContainer)
+    //page.appendChild(selectContainer)
+    page.appendChild(textarea)
 
     pages.insertBefore(page, document.getElementById('createNewPage'))
 }
@@ -196,8 +197,6 @@ function createSelect(n, textarea_text){
 
 function createStartingPages(){
     createPage(1); createPage(2);
-
-    
 }
 
 function ClearModal(){
@@ -241,7 +240,7 @@ function correctPages(n_page){
             //console.log(current_page_label)
             current_page_label.htmlFor = "page" + n
             current_page_label.innerHTML = "Página " + n;
-            current_page_label.appendChild(createSelect(n))
+            //current_page_label.appendChild(createSelect(n))
             current_page_label.appendChild(createRemoveButton(n))
 
             var current_page_textarea = pages[i].querySelector('textarea')
