@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(event_list)
             eventPopup(event_list.find(current_event => current_event['date'] == info.dateStr), info.dateStr)
                 // dont do this, bad writing. Use the php version instead, as it has all the things needed
+            document.cookie = "EVENT_DATE="+info.dateStr;
         }
     });
 
@@ -130,6 +131,8 @@ function createPage(n_page=0, textarea_text=''){
     page.appendChild(textarea)
 
     pages.insertBefore(page, document.getElementById('createNewPage'))
+
+    document.cookie = "N_PAGES="+document.getElementsByClassName('page').length;
 }
 
 function createRemoveButton(n){

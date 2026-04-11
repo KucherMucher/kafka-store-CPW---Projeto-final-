@@ -21,6 +21,12 @@ idea:
         </div>
         <div class="modal-body">
           <form method="POST" action="index.php?page=calendario" class="modal-form">
+            <div class="event-name border border-2 rounded-2 p-2 mb-3">
+              <div class="mb-3">
+                <label for="event-name" class="form-label">Título</label>
+                <input type="text" class="form-control" id="event-name" placeholder="Título da Oração" name="event_name">
+              </div>
+            </div>
             <div class="pages border border-2 rounded-2 p-2 mb-3">
                 <!-- <div class="mb-3">
                   <label for="page1" class="form-label">Página 1</label>
@@ -81,6 +87,15 @@ idea:
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
       print_r($_POST);
+      $N_PAGES = $_COOKIE['N_PAGES'];
+      $page_string = "";
+      for ($i = 1; $i <= $N_PAGES; $i++){
+        $page_string .= $_POST["page$i"]."[\\]";
+      }
+
+      $DATE = $_COOKIE['EVENT_DATE'];
+      $send = "INSERT INTO events (event_name, `date` , music_url, pages)
+      VALUES ($_POST['event_name'], $DATE, $_POST['music'], $page_string)";
     }
 
 ?>
