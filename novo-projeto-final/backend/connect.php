@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "aluno"; // aluno if using vm
-$db   = "om_db"; // _test if using laragon
+$pass = ""; // aluno if using vm
+$db   = "om_db_test"; // _test if using laragon
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 

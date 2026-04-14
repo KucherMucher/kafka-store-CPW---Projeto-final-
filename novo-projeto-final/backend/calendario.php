@@ -24,7 +24,7 @@ idea:
             <div class="event-name border border-2 rounded-2 p-2 mb-3">
               <div class="mb-3">
                 <label for="event-name" class="form-label">Título</label>
-                <input type="text" class="form-control" id="event-name" placeholder="Título da Oração" name="event_name">
+                <input type="text" class="form-control" id="event-name" placeholder="Título da Oração" name="eventname">
               </div>
             </div>
             <div class="pages border border-2 rounded-2 p-2 mb-3">
@@ -90,12 +90,29 @@ idea:
       $N_PAGES = $_COOKIE['N_PAGES'];
       $page_string = "";
       for ($i = 1; $i <= $N_PAGES; $i++){
-        $page_string .= $_POST["page$i"]."[\\]";
+        if ($i == $N_PAGES){$page_string .= $_POST["page$i"];}
+        else{$page_string .= $_POST["page$i"]."[\\]";}
       }
-
+      
+      $result = $mysqli->query("SELECT MAX(id_event) AS last_id FROM events");
+      $row = $result->fetch_assoc();
+      $last_id = $row['last_id'];
+      $new_id = $last_id +1;
+      echo $last_id;
       $DATE = $_COOKIE['EVENT_DATE'];
-      $send = "INSERT INTO events (event_name, `date` , music_url, pages)
-      VALUES ($_POST['event_name'], $DATE, $_POST['music'], $page_string)";
+      if ($_COOKIE['EDIT']==1){
+        $edit = $mysqli->prepare("UPDATE events SET event_name=?, music_url=?, pages=? WHERE `date`=?");
+        $edit -> bind_param("ssss", $_POST["eventname"], $_POST["music"], $page_string, $DATE);
+        $edit -> execute();
+        $edit -> close();
+      }
+      else{
+        $send = $mysqli->prepare("INSERT INTO events (id_event, event_name, `date` , music_url, pages) VALUES (?,?,?,?,?)");
+        $send -> bind_param("sssss", $new_id, $_POST["eventname"], $DATE, $_POST["music"], $page_string);
+        $send -> execute();
+        $send -> close();
+      }
+      
     }
 
 ?>

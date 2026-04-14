@@ -4,6 +4,7 @@ Ctrl + F5 se nao autaliza
 
 var calendar;
 var event_list = [];
+var disabled = false;
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log("casdsad");
@@ -41,6 +42,10 @@ function SetEventList(el){
     console.log(event_list);
 }
 
+function DisabledMode(){
+    disabled = true
+}
+
 
 function eventPopup(event, date){
     ClearModal()
@@ -48,19 +53,25 @@ function eventPopup(event, date){
     var popup = new bootstrap.Modal(document.getElementById('calendarioPopup'));
     //const modalHeader = document.getElementsByClassName('modal-header')[0];
     document.getElementById('modalDate').textContent = date
-    popup.show();
+    
 /*
     var h2 = document.createElement('h2');
     h2.innerHTML = date;
     modalHeader.appendChild(h2);*/
 
-
-    if (event != null ){
+    let show = true
+    if (event != null){
         createContentWithEvent(event)
+        document.cookie="EDIT=1"
     }
     else{
         createStartingPages()
+        document.cookie="EDIT=0"
+        if (disabled){show=false}
     }
+
+    if(show){popup.show();}
+    
 }
 
 
@@ -68,13 +79,14 @@ function createContentWithEvent(event){
     const modalBody = document.getElementsByClassName('modal-body')[0];
     const pages = document.getElementsByClassName('pages')[0];
     console.log(event['music_url'])  
+    document.getElementById('event-name').value = event['event_name']
     document.getElementById('music').value = event['music_url']
     //document.getElementById('video').value = event['video_url']
     page_array = pageParser(event['pages'])
     console.log(page_array)
 
     for(let i=0; i<page_array.length; i++){
-        createPage(i+1, page_array[i])
+        createPage(i+1, page_array[i], edit=true)
     }
 }
 
@@ -113,14 +125,15 @@ function createPage(n_page=0, textarea_text=''){
     label.appendChild(select)*/
 
     var removeButton = createRemoveButton(n_page);
-    label.appendChild(removeButton)
+    if(!disabled){label.appendChild(removeButton)}
 
     var textarea = document.createElement('textarea')
-    textarea.className = 'form-control'
+    textarea.className = 'form-control';
     textarea.id = pageStr
     textarea.rows = '3'
     textarea.placeholder = 'Texto para página ' + n_page
     textarea.name = 'page' + n_page
+    textarea.disabled = disabled;
 
     textarea.innerHTML = textarea_text
 
