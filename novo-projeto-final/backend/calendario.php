@@ -71,20 +71,7 @@ idea:
 
 <?php
     include "connect.php";
-    $q = "SELECT * FROM events";
-
-    $event_list = [];
-
-    $result = $mysqli -> query($q);
-    if ($result -> num_rows > 0){
-      while ($raw = $result -> fetch_assoc()){
-        $event_list[] = $raw;
-        
-      }
-    }
-    print_r($event_list); // debug
-    echo '<script>SetEventList('.json_encode($event_list).');</script>';
-
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
       print_r($_POST);
       $N_PAGES = $_COOKIE['N_PAGES'];
@@ -96,9 +83,7 @@ idea:
       
       $result = $mysqli->query("SELECT MAX(id_event) AS last_id FROM events");
       $row = $result->fetch_assoc();
-      $last_id = $row['last_id'];
-      $new_id = $last_id +1;
-      echo $last_id;
+      $new_id = $row['last_id'] +1;
       $DATE = $_COOKIE['EVENT_DATE'];
       if ($_COOKIE['EDIT']==1){
         $edit = $mysqli->prepare("UPDATE events SET event_name=?, music_url=?, pages=? WHERE `date`=?");
@@ -112,8 +97,22 @@ idea:
         $send -> execute();
         $send -> close();
       }
-      
+      header("Location: index.php?page=calendario");
     }
+
+    $q = "SELECT * FROM events";
+
+    $event_list = [];
+
+    $result = $mysqli -> query($q);
+    if ($result -> num_rows > 0){
+      while ($raw = $result -> fetch_assoc()){
+        $event_list[] = $raw;
+        
+      }
+    }
+    print_r($event_list); // debug
+    echo '<script>SetEventList('.json_encode($event_list).');</script>';
 
 ?>
 

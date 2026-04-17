@@ -62,7 +62,7 @@ idea:
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 
 </div>
 <script src="./js/calendar.js">  

@@ -1,7 +1,7 @@
 /*
 Ctrl + F5 se nao autaliza
 */ 
-
+ 
 var calendar;
 var event_list = [];
 var disabled = false;
@@ -216,6 +216,7 @@ function createStartingPages(){
 }
 
 function ClearModal(){
+    document.getElementById('event-name').value='';
     document.getElementsByClassName('pages')[0].querySelectorAll('div').forEach(div => div.remove());
     document.getElementById('music').value = '';
     //document.getElementById('video').value = '';

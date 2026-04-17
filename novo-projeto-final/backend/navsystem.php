@@ -12,7 +12,7 @@ switch ($page) {
     case 'padroes':
         include 'padroes.php';
         break;
-    case 'ace':
-        include 'ace.php';
+    case 'editor':
+        include 'editor.php';
         break;
 }
