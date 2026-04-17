@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "aluno"; // aluno if using vm
+$pass = ""; // aluno if using vm
 $db   = "kafka_local_database";
 
 $mysqli = new mysqli($host, $user, $pass, $db);

@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loading - main');
     // Todo o código da galeria será colocado aqui
-    const main = document.getElementsByTagName("main")
+    const main = document.getElementsByTagName("main")[0];
     switch (main.id){
         case 'home':
             loadScript(carousel, function() {initCarousel();})
