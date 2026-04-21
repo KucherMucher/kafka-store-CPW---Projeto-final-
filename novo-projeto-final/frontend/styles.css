@@ -1,0 +1,39 @@
+div#Image {
+    padding: 13px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    min-height: 100vh;
+    
+
+}
+
+h1, p, div#bottom {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 45px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    margin-top: 0px;
+    margin-right: 20px;
+    margin-left: 45px;
+    margin-bottom: 0px;
+}
+
+div#bottom {
+    position: fixed;
+    bottom: 10px;
+}
+
+.carousel-control-prev {
+    width: 50px;
+}
+
+.carousel-control-next {
+    
+    left: 96%;
+    width: 50px;
+}
