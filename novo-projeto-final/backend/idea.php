@@ -8,7 +8,8 @@ whats the idea for back end:
     . ...
 
 Preset:
-    . whats the idea for editor??????????'
+    . For now, presets are for specific cases
+    . in calendar, you can choose colors, images and music. If you choose preset, it will change the colors and images. If preset has an edited html file, refer it inj the database
 
 
 

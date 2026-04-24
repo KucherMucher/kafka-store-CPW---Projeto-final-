@@ -47,6 +47,25 @@ idea:
               </div> 
             </div>
 
+            <div class="colors border border-2 rounded-2 p-2 mb-3">
+              <h6>Cores</h6>
+              <div class="mb-3 border border-1 rounded-2">
+                <label for="bg-color" class="form-label p-2">Cor de fundo</label>
+                <input type="color" id="bg-color" name="bg-color" value="#e66465"/>
+              </div>
+              <div class="mb-3 border border-1 rounded-2">
+                <label for="text-color" class="form-label p-2">Cor de texto</label>
+                <input type="color" id="text-color" name="text-color" value="#e66465"/>
+              </div> 
+            </div>
+
+            <div class="image border border-2 rounded-2 p-2 mb-3">
+              <div class="mb-3">
+                <label for="image" class="form-label">Imagem</label>
+                <input type="file" class="form-control" id="image" placeholder="imagem" name="image">
+              </div> 
+            </div>
+
             <!--<div class="video border border-2 rounded-2 p-2">
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Vídeo</label>

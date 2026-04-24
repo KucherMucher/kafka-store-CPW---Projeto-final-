@@ -9,3 +9,17 @@
 
 */ 
 
+document.addEventListener("DOMContentLoaded", function(){
+    console.log("loading editor");
+});
+
+
+function Change_BG_Color(color){
+    main = document.getElementsByTagName("main");
+    main.style = "background-color: "+color+"";
+}
+
+function Change_Text_Color(color){
+    
+}
+

@@ -2,11 +2,8 @@ div#Image {
     padding: 13px;
     display: inline-block;
     background-repeat: no-repeat;
-    
     background-size: cover;
     min-height: 100vh;
-    
-
 }
 
 h1, p, div#bottom {

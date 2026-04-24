@@ -14,6 +14,11 @@
     <main class="main" style="background-color: <?php echo $corbackground ?>; color: <?php echo $cortexto ?>">
         <div class="row wrap container-fluid" style="width='100vh'">
             <div class="container row h-100">
+                <div class="col-md-5">
+                    <?php echo '<div class="bg-image d-none d-md-block h-100" style="background-image: url(' . $imagem . '); background-position: end" alt="' . $altimage . '" id="Image">
+                    <img src="CSM_ball_logo_oficial.png" alt="Logo Colégio" width="100vh" height="100vh">
+                    </div>' ?>
+                </div>
                 <div id="carouselExampleIndicators" class="col-md-7 h-100 carousel slide" style="min-height: 100vh;">
                     <?php echo '<h1>' . $titulo . '</h1>';
                     echo "<h4>" . $dia . "/" . $mes . "/" . $ano . "</h4>";
@@ -55,13 +60,9 @@
                         </svg>
                     </button>
                 </div>
+                
 
-
-                <div class="col-md-5">
-                    <?php echo '<div class="bg-image d-none d-md-block h-100" style="background-image: url(' . $imagem . '); background-position: end" alt="' . $altimage . '" id="Image">
-                    <img src="CSM_ball_logo_oficial.png" alt="Logo Colégio" width="100vh" height="100vh">
-                    </div>' ?>
-                </div>
+                
                 
             </div>
         </div>
